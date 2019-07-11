@@ -1,4 +1,7 @@
 const api = require('express').Router();
+const product = require('./product.js');
+
+api.use('/product', product);
 
 api.get('/', (req, res) => {
     res.status(200).json('This is My first True End Point');
@@ -18,28 +21,6 @@ api.get('/Salem/:name', (req, res) => {
         res.send(`${hiSentence}
         Haven't You Seen Is Asma?`);
     }
-});
-
-api.get('/products', (req, res) => {
-    global.db.query(`SELECT * FROM \`products\` `, (error, results, fields) => {
-        if (error) {
-            console.error(error);
-            res.status(400).json(error);
-        } else {
-            res.json(results);
-        }
-    })
-});
-
-api.get('/product/:id', (req, res) => {
-    global.db.query(`SELECT * FROM \`products\` WHERE id = ${req.params.id}`, (error, results, fields) => {
-        if (error) {
-            console.error(error);
-            res.status(400).json(error);
-        } else {
-            res.json(results);
-        }
-    })
 });
 
 module.exports = api;
