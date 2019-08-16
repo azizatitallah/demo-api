@@ -21,9 +21,9 @@ app.use(logger('dev'));
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
 const db = mysql.createConnection ({
     host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'demo4Asma'
+    user: 'asma1995',
+    password: 'TdSmennPYKo10ahQ',
+    database: 'simotex'
 });
 
 // connect to database
