@@ -12,7 +12,7 @@ intervention.get('/all', (req, res) => {
 });
 
 
-intervention.get('/create', (req, res) => {
+intervention.post('/create', (req, res) => {
     var ID = req.body.ID;
     var mecanicien = req.body.mecanicien;
     var Date = req.body.Date;

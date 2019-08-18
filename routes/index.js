@@ -1,8 +1,13 @@
 const api = require('express').Router();
 const product = require('./product.js');
 const intervention = require('./intervention.js');
+
+const categorie = require('./categorie.js');
 api.use('/product', product);
 api.use('/intervention', intervention);
+
+api.use('/categorie', categorie);
+
 api.get('/', (req, res) => {
     res.status(200).json('This is My first True End Point');
 });
