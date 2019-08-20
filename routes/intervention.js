@@ -11,11 +11,9 @@ intervention.get('/all', (req, res) => {
     })
 });
 
-
 intervention.post('/create', (req, res) => {
-    var ID = req.body.ID;
+    
     var mecanicien = req.body.mecanicien;
-    var Date = req.body.Date;
     var NumMachine = req.body.NumMachine;
     var Reclamation = req.body.Reclamation;
     var Debut = req.body.Debut;
@@ -23,9 +21,9 @@ intervention.post('/create', (req, res) => {
     var Categorie = req.body.Categorie ;
     var chaine = req.body.chaine;
     var TypeMachine = req.body.TypeMachine;
-    var sql = `INSERT INTO \`intervention\` (ID, mecanicien, Date, NumMachine, Reclamation, Debut, Fin, Categorie, chaine, TypeMachine) VALUES ("${ID}", "${mecanicien}", "${Date}", "${NumMachine}", "${Reclamation}", "${Debut}", "${Fin}", "${Categorie}",  "${chaine}", "${TypeMachine}")`;
+    var sql = `INSERT INTO \`intervention\` (mecanicien, NumMachine, Reclamation, Debut, Fin, Categorie, chaine, TypeMachine) VALUES ( "${mecanicien}", "${NumMachine}", "${Reclamation}", "${Debut}", "${Fin}", "${Categorie}",  "${chaine}", "${TypeMachine}")`;
     
-    global.db.query(sql,[ID, mecanicien, Date, NumMachine, Reclamation, Debut, Fin, Categorie, chaine, TypeMachine], (error, results, fields) => {
+    global.db.query(sql, [mecanicien, NumMachine, Reclamation, Debut, Fin, Categorie, chaine, TypeMachine], (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
