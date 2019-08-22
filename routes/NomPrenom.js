@@ -1,9 +1,6 @@
 
 const NomPrenom = require('express').Router();
 
-
-
-
 NomPrenom.get('/nom', (req, res) => {
     var Type_intervention = req.body.Type_intervention;
 
