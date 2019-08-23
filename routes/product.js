@@ -22,7 +22,6 @@ product.get('/:id', (req, res) => {
     })
 });
 
-
 product.delete('/:id', (req, res) => {
     global.db.query(`DELETE FROM \`products\` WHERE id =  ${id}`, (error, results, fields) => {
         if (error) {
@@ -48,11 +47,8 @@ product.post('/create', (req, res) => {
             res.status(400).json(error);
         } else {
             res.json("produit ajouté");
-            
         }
     })
 });
 
-
 module.exports = product;
-

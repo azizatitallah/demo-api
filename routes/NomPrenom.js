@@ -1,4 +1,3 @@
-
 const NomPrenom = require('express').Router();
 
 NomPrenom.get('/nom', (req, res) => {
@@ -15,4 +14,3 @@ NomPrenom.get('/nom', (req, res) => {
 });
 
 module.exports = NomPrenom;
-
