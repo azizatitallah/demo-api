@@ -3,9 +3,10 @@ const product = require('./product.js');
 const intervention = require('./intervention.js');
 const NomPrenom= require('./NomPrenom');
 const categorie = require('./categorie.js');
+const operation = require('./operation.js');
 api.use('/product', product);
 api.use('/intervention', intervention);
-
+api.use('/operation', operation);
 api.use('/NomPrenom', NomPrenom);
 api.use('/categorie', categorie);
 
