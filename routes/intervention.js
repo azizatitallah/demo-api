@@ -21,7 +21,8 @@ intervention.post('/create', (req, res) => {
     var Categorie = req.body.Categorie ;
     var chaine = req.body.chaine;
     var TypeMachine = req.body.TypeMachine;
-    var sql = `INSERT INTO \`intervention\` (mecanicien, NumMachine, Reclamation, Debut, Fin, Categorie, chaine, TypeMachine) VALUES ( "${mecanicien}", "${NumMachine}", "${Reclamation}", "${Debut}", "${Fin}", "${Categorie}",  "${chaine}", "${TypeMachine}")`;
+    console.log(req.body)
+    var sql = `INSERT INTO \`intervention\` (mecanicien, NumMachine, Reclamation, Debut, Fin, Categorie, chaine, TypeMachine) VALUES ( "${mecanicien}", "${NumMachine}", "${Reclamation}",Debut , Fin, "${Categorie}",  "${chaine}", "${TypeMachine}")`;
     
     global.db.query(sql, [mecanicien, NumMachine, Reclamation, Debut, Fin, Categorie, chaine, TypeMachine], (error, results, fields) => {
         if (error) {
@@ -31,6 +32,7 @@ intervention.post('/create', (req, res) => {
             res.json("intervention ajouté");
             
         }
+        console.log(req.body)
     })
 });
 
