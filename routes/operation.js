@@ -6,7 +6,7 @@ operation.get('/alloperateur', (req, res) => {
             console.error(error);
             res.status(400).json(error);
         } else {
-            res.json('opérateur.Matricule');
+            res.json(results);
         }
     })
 });
@@ -18,7 +18,7 @@ operation.get('/alloperation', (req, res) => {
             console.error(error);
             res.status(400).json(error);
         } else {
-            res.json('opération.Code_Operation');
+            res.json(results);
         }
     })
 });
@@ -36,9 +36,10 @@ operation.get('/all', (req, res) => {
 
 
 operation.post('/create', (req, res) => {
-    
+    console.log(req.body);
     var Matricule = req.body.Matricule;
     var Code_Operation = req.body.Code_Operation;
+   
     var sql = `INSERT INTO \`effectue\` (Matricule, Code_Operation) VALUES ( "${Matricule}", "${Code_Operation}")`;
     
     global.db.query(sql, [Matricule, Code_Operation], (error, results, fields) => {
