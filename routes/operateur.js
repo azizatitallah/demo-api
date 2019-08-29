@@ -7,19 +7,11 @@ const operateur = require('express').Router();
 operateur.post('/presence', (req, res) => {
     console.log(req.body);
     var Matricule = req.body.Matricule;
-
+    var sql = `INSERT INTO \`travaille\` (Matricule) VALUES`;
     for (var i = 0; i < Matricule.length; i++) {   
         console.log(Matricule[i]);
-        Matricule1= Matricule[0];  
-        Matricule2=  Matricule[1];
-        Matricule3=  Matricule[2];
-      var sql = `INSERT INTO \`travaille\` (Matricule) VALUES  ("${Matricule1}"), ("${Matricule2}"), ("${Matricule3}") `; 
-
+        sql = `${sql} (${Matricule[i]}),`; 
     }
-      
-      
-     
-    
     
     global.db.query(sql, [Matricule] ,(error, results, fields)  => {
        

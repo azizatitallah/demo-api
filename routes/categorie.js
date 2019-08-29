@@ -1,8 +1,4 @@
-
 const categorie = require('express').Router();
-
-
-
 
 categorie.get('/all', (req, res) => {
     var Type_intervention = req.body.Type_intervention;
