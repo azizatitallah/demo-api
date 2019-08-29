@@ -1,9 +1,5 @@
 const operateur = require('express').Router();
 
-
-
-
-
 operateur.post('/presence', (req, res) => {
     console.log(req.body);
     var Matricule = req.body.Matricule;
@@ -12,6 +8,8 @@ operateur.post('/presence', (req, res) => {
         console.log(Matricule[i]);
         sql = `${sql} (${Matricule[i]}),`; 
     }
+
+    sql = sql.substring(0, str.length - 1);
     
     global.db.query(sql, [Matricule] ,(error, results, fields)  => {
        
@@ -19,13 +17,9 @@ operateur.post('/presence', (req, res) => {
             console.error(error);
             res.status(400).json(error);
         }  else {
-            res.json("intervention ajouté");
-            
+            res.json("intervention ajouté");    
         }
     })
-
 });
 
-
 module.exports = operateur;
-
