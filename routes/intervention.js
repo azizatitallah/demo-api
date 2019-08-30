@@ -32,7 +32,7 @@ intervention.post('/create', (req, res) => {
     var Categorie = req.body.Categorie ;
     var chaine = req.body.chaine;
     var TypeMachine = req.body.TypeMachine;
-    var sql = `INSERT INTO \`intervient\` (Matricule_mecanicien, Num_Machine, Reclamation, Debut, Fin, id_categorie_intervention, chaine, TypeMachine) VALUES ( "${mecanicien}", "${NumMachine}", "${Reclamation}", FROM_UNIXTIME(${Debut}), FROM_UNIXTIME(${Fin}), "${Categorie}",  "${chaine}", "${TypeMachine}")`;
+    var sql = `INSERT INTO \`intervient\` (Matricule_mecanicien, Num_Machine, Reclamation, Debut, Fin, id_categorie_intervention, chaine, TypeMachine) VALUES ( ${mecanicien}, ${NumMachine}, "${Reclamation}", FROM_UNIXTIME(${Debut}), FROM_UNIXTIME(${Fin}), "${Categorie}",  "${chaine}", "${TypeMachine}")`;
     console.log(sql)
     global.db.query(sql, [mecanicien, NumMachine, Reclamation, Debut, Fin, Categorie, chaine, TypeMachine], (error, results, fields) => {
         if (error) {

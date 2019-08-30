@@ -43,7 +43,7 @@ operation.post('/create', (req, res) => {
     var Matricule = req.body.Matricule;
     var Code_Operation = req.body.Code_Operation;
    
-    var sql = `INSERT INTO \`effectue\` (Matricule, Code_Operation) VALUES ( "${Matricule}", "${Code_Operation}") `;
+    var sql = `INSERT INTO \`effectue\` (Matricule, Code_Operation) VALUES ( ${Matricule}, ${Code_Operation}) `;
     
     global.db.query(sql, [Matricule, Code_Operation], (error, results, fields) => {
         if (error) {
