@@ -5,12 +5,14 @@ const NomPrenom= require('./NomPrenom');
 const categorie = require('./categorie.js');
 const operation = require('./operation.js');
 const operateur = require('./operateur.js');
+const effectue = require('./effectue.js');
 api.use('/product', product);
 api.use('/intervention', intervention);
 api.use('/operation', operation);
 api.use('/NomPrenom', NomPrenom);
 api.use('/categorie', categorie);
 api.use('/operateur', operateur);
+api.use('/effectue', effectue);
 api.get('/', (req, res) => {
     res.status(200).json('This is My first True End Point');
 });

@@ -1,7 +1,7 @@
 const intervention = require('express').Router();
 
 intervention.get('/all', (req, res) => {
-    global.db.query('SELECT * FROM `intervention`', (error, results, fields) => {
+    global.db.query('SELECT * FROM `intervient`', (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
@@ -21,6 +21,31 @@ intervention.get('/mecano', (req, res) => {
     })
 });
 
+intervention.get('/mecano/:Matricule', (req, res) => {
+    global.db.query(`SELECT Prenom_mecanicien FROM \`mécanicien\` WHERE Matricule_mecanicien=${req.params.Matricule}`, (error, results, fields) => {
+        if (error) {
+            console.error(error);
+            res.status(400).json(error);
+        } else {
+            res.json(results);
+        }
+    })
+});
+
+intervention.get('/interventionCategorie', (req, res) => {
+    global.db.query(`SELECT catégorie_intervention.Type_intervention, COUNT(*) AS Compte
+FROM \`catégorie_intervention\`, \`intervient\`
+WHERE catégorie_intervention.id_categorie_intervention=intervient.id_categorie_intervention
+GROUP BY Type_intervention`, (error, results, fields) => {
+if (error) {
+    console.error(error);
+    res.status(400).json(error);
+} else {
+    res.json(results);
+}
+console.log(reqsults);
+})
+});
 
 intervention.post('/create', (req, res) => {
     console.log(req.body);

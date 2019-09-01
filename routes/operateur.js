@@ -41,14 +41,11 @@ operateur.get('/operateurPresent', (req, res) => {
 
 // Sortie operateurs
 
-operateur.put('/sortie', (req, res) => {
-    var Matricule = req.body.Matricule;  
+operateur.put('/:Matricule', (req, res) => {
+        console.log(req.body);
    
-    console.log(req.body);
-   
-    var sql = `UPDATE \`travaille\` SET Fin= NOW() WHERE Matricule= ${Matricule}`;
+        global.db.query( `UPDATE \`travaille\` SET Fin= NOW() WHERE Matricule=${req.params.Matricule}`,  (error, results, fields) => {   
     
-    global.db.query(sql, (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
