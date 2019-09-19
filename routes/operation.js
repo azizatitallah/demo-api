@@ -13,7 +13,7 @@ operation.get('/alloperateur', (req, res) => {
 
 
 operation.get('/alloperation', (req, res) => {
-    global.db.query('SELECT * FROM `opération` ', (error, results, fields) => {
+    global.db.query(`SELECT * FROM \`opération\``, (error, results, fields) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
@@ -43,7 +43,7 @@ operation.post('/create', (req, res) => {
     var Matricule = req.body.Matricule;
     var Code_Operation = req.body.Code_Operation;
    
-    var sql = `INSERT INTO \`effectue\` (Matricule, Code_Operation) VALUES ( ${Matricule}, ${Code_Operation}) `;
+    var sql = `INSERT INTO \`Affecter\` (Matricule, Code_Operation) VALUES ( ${Matricule}, ${Code_Operation}) `;
     
     global.db.query(sql, [Matricule, Code_Operation], (error, results, fields) => {
         if (error) {

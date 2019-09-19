@@ -27,7 +27,9 @@ operateur.post('/presence', (req, res) => {
 
 //selectt les operateurs presents
 operateur.get('/operateurPresent', (req, res) => {
-    sql= `SELECT * FROM \`travaille\` WHERE Date >= CURDATE() AND Date < CURDATE() + INTERVAL 1 DAY `;
+    sql= `SELECT opérateur.Nom_op, opérateur.Prenom_op, Time(travaille.Début) as date, travaille.Fin
+    FROM \`travaille\`, \`opérateur\`
+    WHERE opérateur.Matricule=travaille.Matricule and Début >= CURDATE() AND Début < CURDATE() + INTERVAL 1 DAY `;
     global.db.query(sql, (error, results, fields) => {
         if (error) {
             console.error(error);
